@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react";
 import CountUp from "@/components/CountUp";
+import Logo from "@/components/Logo";
+import Link from "next/link";
 
 export default function Home() {
   const [displayedText, setDisplayedText] = useState("");
@@ -46,15 +48,17 @@ export default function Home() {
                 <span className={`ml-1 ${showCursor ? 'opacity-100' : 'opacity-0'}`}>|</span>
               </h1>
               <p className="text-lg md:text-xl text-zinc-300">
-                Thanks to <span style={{ color: '#213147' }}>Arbitrum</span> <span style={{ color: '#e3066e' }}>Stylus</span>.
+                Built on <span style={{ color: '#213147' }}>Arbitrum</span> <span style={{ color: '#e3066e' }}>Stylus</span>.
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 mt-4">
-              <button className="px-8 py-4 bg-white text-black font-semibold rounded-lg hover:bg-zinc-200 transition-colors">
-                Rebalance on-chain
-              </button>
-              <button className="px-8 py-4 border border-white/20 text-white font-semibold rounded-lg hover:bg-white/10 transition-colors">
+              <Link href="/rebalance">
+                <button className="px-8 py-4 bg-white text-black font-semibold rounded-lg hover:bg-zinc-200 transition-colors cursor-pointer w-full sm:w-auto">
+                  Rebalance on-chain
+                </button>
+              </Link>
+              <button className="px-8 py-4 border border-white/20 text-white font-semibold rounded-lg hover:bg-white/10 transition-colors cursor-pointer">
                 View the technical docs
               </button>
             </div>
@@ -130,19 +134,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* SECTION 6 - ARCHITECTURE DIAGRAM */}
-        <section className="px-8 md:px-16 py-24 border-t border-white/10">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-center">
-            On-chain computation, off-chain speed
-          </h2>
-          <p className="text-xl text-zinc-400 text-center mb-12">
-            Frontend → Stylus (Rust/WASM math) → DEX Router (Solidity)
-          </p>
-          <div className="max-w-4xl mx-auto h-64 border border-white/20 rounded-xl flex items-center justify-center bg-white/5">
-            <span className="text-zinc-500">Architecture Diagram Placeholder</span>
-          </div>
-        </section>
-
         {/* SECTION 7 - SECURITY / TRUSTLESSNESS */}
         <section className="px-8 md:px-16 py-24 border-t border-white/10">
           <div className="max-w-4xl mx-auto text-center">
@@ -179,7 +170,10 @@ export default function Home() {
         {/* SECTION 9 - FOOTER */}
         <footer className="px-8 md:px-16 py-12 border-t border-white/10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6 max-w-6xl mx-auto">
-            <div className="text-2xl font-bold">HyperBalance</div>
+            <div className="flex items-center gap-3">
+              <Logo width={40} height={40} />
+              <span className="text-2xl font-bold">HyperBalance</span>
+            </div>
             <div className="flex gap-8 text-lg">
               <a href="#" className="text-zinc-300 hover:text-white transition-colors">GitHub</a>
               <a href="#" className="text-zinc-300 hover:text-white transition-colors">Docs</a>
